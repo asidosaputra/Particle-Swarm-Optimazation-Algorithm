@@ -19,12 +19,12 @@ cost_function = lambda position : surface_function(position)
 
 **Step 2 : Problems Argument** is to defines your specify the argument, **Problems Argument** must be in ```dict type```, all keys name must same to this examples below,
 ```
-#youre initial models
-var_min = -10       #lower bound of 
-var_max = 10
-num_pop = 2
-num_var = 1
-seed = 12345
+#your initial models
+var_min = -10       #lower bound of unknown variable/model
+var_max = 10        #upper bound of unknown variable/model
+num_pop = 50        #number of population
+num_var = 2         #number of unknown variable
+seed = 12345        #by default is None. Seed is key generator of random number
 
 #problems arguments
 problem = {
@@ -56,6 +56,15 @@ params = {
     'c1'       : chi*phi_1,
     'c2'       : chi*phi_2
 }
+```
+**Step 4 : Call PSO**, ```PSO()``` is a class in directory ```\src```, below how to call it,
+```
+pso = PSO()
+pso.optimize(problem, params)
+global_best, cost_hist = pso.run(verbose=False, show_iter=False)
+
+print(global_best)
+plt.show()
 ```
 
 ## 1. Optimize global minum of Surface Equation
